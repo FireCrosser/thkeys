@@ -10,7 +10,7 @@ public class ClassroomDAO {
 	
 	public void insertClassroomsData(ArrayList<Auditorium> auds) {
 		Jedis jedis = new Jedis("localhost"); 
-	    System.out.println("Connection to server sucessfully");
+	    //System.out.println("Connection to server sucessfully");
 	    
 	    for(Auditorium aud : auds) {
 	    	//Заповнюємо колекцію всіх аудиторій
@@ -30,7 +30,7 @@ public class ClassroomDAO {
 	//Getting classrooms
 	public Set<String> getAllClassrooms() {
 		Jedis jedis = new Jedis("localhost"); 
-	    System.out.println("Connection to server sucessfully");
+	    //System.out.println("Connection to server sucessfully");
 	    
 		Set<String> classrooms = jedis.smembers("classrooms");
 		
@@ -42,7 +42,7 @@ public class ClassroomDAO {
 	//Getting classrooms of the campus
 	public Set<String> getClassroomsOfTheCampus(int campusNo) {
 		Jedis jedis = new Jedis("localhost"); 
-	    System.out.println("Connection to server sucessfully");
+	    //System.out.println("Connection to server sucessfully");
 	    
 		Set<String> classrooms = jedis.smembers("classrooms:"+campusNo);
 		
@@ -54,7 +54,7 @@ public class ClassroomDAO {
 	//Getting classrooms with computers
 	public Set<String> getComputerClassrooms() {
 		Jedis jedis = new Jedis("localhost"); 
-	    System.out.println("Connection to server sucessfully");
+	    //System.out.println("Connection to server sucessfully");
 	    
 		Set<String> classrooms = jedis.smembers("classrooms_comp");
 		
