@@ -1,4 +1,4 @@
-package vo;
+package ua.edu.ukma.thkeys.vo;
 
 public class TeacherSubjectInfo {
 	

@@ -1,4 +1,4 @@
-package parsers;
+package ua.edu.ukma.thkeys.parsers;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,13 +8,12 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import vo.Auditorium;
+import ua.edu.ukma.thkeys.vo.Auditorium;
 
 public class AuditoriesParser {
 	
-	//Інформація про аудиторії університету
-	//Номер, корпус, чи комп. клас
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	//пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅ. пїЅпїЅпїЅпїЅ
 	public ArrayList<Auditorium> parseFile(String filename) throws IOException {
 		Document doc = Jsoup.parse(new File(filename), "UTF-8");
 		Element table = doc.select("table").get(0); //select the first table.
@@ -30,7 +29,7 @@ public class AuditoriesParser {
 		    aud.setRoom_no(cols.get(0).text());
 		    aud.setCampus_no(aud.getRoom_no().split("-")[0]);
 		    
-		    if(cols.get(3).text().equals("Так"))
+		    if(cols.get(3).text().equals("пїЅпїЅпїЅ"))
 		    	aud.setCompRoom(true);
 		    else
 		    	aud.setCompRoom(false);

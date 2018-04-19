@@ -1,13 +1,13 @@
-package services;
+package ua.edu.ukma.thkeys.services;
 
 import java.util.HashSet;
 
 public class WeeksParser {
 
-	//Зі стрічки, що описує номери тижнів, дістати власне номери тижнів
+	//Зі пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	public static HashSet<Integer> getWeeksNumbers(String weeks) {
 		
-		//Тижні записані через кому
+		//пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		String[] weeks_split = weeks.split(",");
 		
 		HashSet<Integer> res = new HashSet<Integer>();

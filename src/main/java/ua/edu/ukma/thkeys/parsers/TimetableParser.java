@@ -1,4 +1,4 @@
-package parsers;
+package ua.edu.ukma.thkeys.parsers;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,13 +10,13 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import ua.edu.ukma.thkeys.vo.TeacherSubjectInfo;
 
-import vo.TeacherSubjectInfo;
 
 public class TimetableParser {
 	
-	//Повертає розклад у вигляді об'єктів
-	//1 об'єкт - 1 пара
+	//пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ'пїЅпїЅпїЅпїЅ
+	//1 пїЅпїЅ'пїЅпїЅпїЅ - 1 пїЅпїЅпїЅпїЅ
 	public ArrayList<TeacherSubjectInfo> parseFile(String filename) throws IOException {
 		Document doc = Jsoup.parse(new File(filename), "UTF-8");
 		Element table = doc.select("table").get(0); //select the first table.
@@ -39,7 +39,7 @@ public class TimetableParser {
 		    
 		    TeacherSubjectInfo info = new TeacherSubjectInfo();
 		    
-		    //Якщо в цей день більше немає предметів, переходимо на наступний день
+		    //пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 		    if(cols.get(2).text().equals("")) continue;
 		    else info.setSubjectName(cols.get(2).text());
 		    

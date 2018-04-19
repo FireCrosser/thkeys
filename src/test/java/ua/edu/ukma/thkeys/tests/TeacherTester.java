@@ -1,14 +1,13 @@
-package tests;
+package ua.edu.ukma.thkeys.tests;
 
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.Before;
 import org.junit.Test;
 
-import dao.DatabaseFiller;
-import dao.TeacherDAO;
+import ua.edu.ukma.thkeys.dao.DatabaseFiller;
+import ua.edu.ukma.thkeys.dao.TeacherDAO;
 
 public class TeacherTester {
 	
@@ -18,8 +17,8 @@ public class TeacherTester {
 	
 		TeacherDAO teachDao = new TeacherDAO();
 		
-		//System.out.println("Розклад викладача доц. A. М. Глибовець");
-		Set<Map<String, String>> sched = teachDao.getTeacherSchedule("доц. А.М. Глибовець");
+		//System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. A. пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+		Set<Map<String, String>> sched = teachDao.getTeacherSchedule("пїЅпїЅпїЅ. пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 		
 		for(Map<String, String> sch : sched) {
 			for (Map.Entry<String, String> entry : sch.entrySet()) {
@@ -49,8 +48,8 @@ public class TeacherTester {
 	
 		TeacherDAO teachDao = new TeacherDAO();
 		
-		//System.out.println("Розклад викладача доц. A. М. Глибовець");
-		Set<Map<String, String>> sched = teachDao.getTeacherScheduleByWeek("доц. А.М. Глибовець", 14);
+		//System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ. A. пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+		Set<Map<String, String>> sched = teachDao.getTeacherScheduleByWeek("пїЅпїЅпїЅ. пїЅ.пїЅ. пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", 14);
 		
 		for(Map<String, String> sch : sched) {
 			for (Map.Entry<String, String> entry : sch.entrySet()) {

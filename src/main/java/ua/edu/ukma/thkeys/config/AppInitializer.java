@@ -11,12 +11,12 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{SpringConfiguration.class};
+        return new Class[]{SpringConfiguration.class, JedisConfiguration.class};
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return null;
+        return new Class[]{WebConfiguration.class};
     }
 
     @Override

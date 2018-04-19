@@ -1,14 +1,13 @@
-package dao;
+package ua.edu.ukma.thkeys.dao;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Set;
 
-import parsers.AuditoriesParser;
-import parsers.TimetableParser;
-import vo.Auditorium;
-import vo.TeacherSubjectInfo;
+import ua.edu.ukma.thkeys.parsers.AuditoriesParser;
+import ua.edu.ukma.thkeys.parsers.TimetableParser;
+import ua.edu.ukma.thkeys.vo.Auditorium;
+import ua.edu.ukma.thkeys.vo.TeacherSubjectInfo;
 
 public class DatabaseFiller {
 	
@@ -58,7 +57,7 @@ public class DatabaseFiller {
 	}*/
 	
 	private static ArrayList<String> getAllFiles() {
-		String folderPath = "F:/Магістерка/Info_retr/Practices/workspace/Redis_schedule/files_to_parse/schedule";
+		String folderPath = "F:/пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ/Info_retr/Practices/workspace/Redis_schedule/files_to_parse/schedule";
 		
 		ArrayList<String> res = new ArrayList<String>();
 		

@@ -1,4 +1,4 @@
-package tests;
+package ua.edu.ukma.thkeys.tests;
 
 import java.io.IOException;
 import java.util.Set;
@@ -6,8 +6,8 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 
-import dao.ClassroomDAO;
-import dao.DatabaseFiller;
+import ua.edu.ukma.thkeys.dao.ClassroomDAO;
+import ua.edu.ukma.thkeys.dao.DatabaseFiller;
 
 public class LaborantAudsTester {
 	
