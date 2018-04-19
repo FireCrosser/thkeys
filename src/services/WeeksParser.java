@@ -41,9 +41,10 @@ public class WeeksParser {
 	
 	//7-11
 	private static HashSet<Integer> getWeeksFromRange(String str) {
+		
 		HashSet<Integer> res = new HashSet<Integer>();
 		
-		String[] weeks_spl = str.split("-");
+		String[] weeks_spl = str.replaceAll("\\s+","").split("-");
 		
 		int start = Integer.parseInt(weeks_spl[0]);
 		int end = Integer.parseInt(weeks_spl[1]);
@@ -58,11 +59,14 @@ public class WeeksParser {
 	}
 	
 	public static void main(String[] args) {
-		HashSet<Integer> weeks = WeeksParser.getWeeksNumbers("1-14");
+		HashSet<Integer> weeks = WeeksParser.getWeeksNumbers("1 - 12");
 		
 		for(int w : weeks) {
 			System.out.print(w+" ");
 		}
+		
+		/*String s = "1 - 12";
+		System.out.println(s.replaceAll("\\s+",""));*/
 	}
 
 }

@@ -3,6 +3,7 @@ package dao;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 import parsers.AuditoriesParser;
 import parsers.TimetableParser;
@@ -26,19 +27,35 @@ public class DatabaseFiller {
 	    TimetableParser timetPars = new TimetableParser();
 	    TeacherDAO teachDao = new TeacherDAO();
 	    
-	    //ArrayList<TeacherSubjectInfo> subjs;
+	    /*ArrayList<TeacherSubjectInfo> subjs = timetPars.parseFile("files_to_parse/schedule/timetable_ipz_2.html"); 
+	    teachDao.insertSubjectsData(subjs);*/
+	    ArrayList<TeacherSubjectInfo> subjs;
 	    
-	    /*for(String spec : getAllFiles()) {
+	    for(String spec : getAllFiles()) {
 	    	subjs = timetPars.parseFile(spec);
-	    	System.out.println("Size: "+subjs.size());
+	    	//System.out.println("Size: "+subjs.size());
 	    	teachDao.insertSubjectsData(subjs);
-	    }*/
+	    }
 		
 		/*ArrayList<String> files = getAllFiles();
 		for(String file : files) {
 			System.out.println(file);
 		}*/
 	}
+	
+	/*public static void fillTeacherNamesData() throws IOException {
+		TimetableParser timetPars = new TimetableParser();
+	    TeacherDAO teachDao = new TeacherDAO();
+	    
+	    Set<String> teachs;
+	    
+	    for(String spec : getAllFiles()) {
+	    	teachs = timetPars.parseTeacherNames(spec);
+	    	//System.out.println("Size: "+subjs.size());
+	    	teachDao.insertTeacherNames(teachs);
+	    }
+	    
+	}*/
 	
 	private static ArrayList<String> getAllFiles() {
 		String folderPath = "F:/Магістерка/Info_retr/Practices/workspace/Redis_schedule/files_to_parse/schedule";
@@ -55,6 +72,10 @@ public class DatabaseFiller {
 	    }
 		    
 		return res;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		fillSubjectsData();
 	}
 
 }

@@ -7,14 +7,16 @@ import java.util.Map;
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
+import services.WeeksParser;
 import vo.Auditorium;
 import vo.TeacherSubjectInfo;
 
 public class TeacherDAO {
 	
+	//Для розкладу викладача
 	public void insertSubjectsData(ArrayList<TeacherSubjectInfo> subjects) {
 		Jedis jedis = new Jedis("localhost"); 
-	    //System.out.println("Connection to server sucessfully");
+	    //System.out.println("Connection to server sucessfully DAO");
 	    
 	    String pairKey = "pk";
 	    
@@ -38,6 +40,12 @@ public class TeacherDAO {
 	    	
 	    	//Додаємо пару до розкладу даного викладача
 	    	jedis.sadd("teacher_schedule:"+subj.getTeacher(), pairKey);
+	    	
+	    	//Формуємо список спеціальностей
+	    	jedis.sadd("specialities_years", subj.getSpec_year());
+	    	
+	    	//Формуємо список викладачів
+	    	jedis.sadd("teacher_names", subj.getTeacher());
 	    }
 	    
 	    System.out.println("Data was inserted successfully!");
@@ -45,16 +53,14 @@ public class TeacherDAO {
 	    jedis.close();
 	}
 	
-	//Групування: день, пара, час. Інформація: аудиторія, предмет,тип, спеціальність, курс, група, тижні
-	/*public Map<String, String> getSubjectDetails(String specYear, String day_week_name, int pair_no) {
+	/*public void insertTeacherNames(Set<String> teachers) {
 		Jedis jedis = new Jedis("localhost"); 
-	    System.out.println("Connection to server sucessfully");
-	    
-	    Map<String, String> dets = jedis.hgetAll("teacher_subject_det:"+specYear+":"+day_week_name+":"+pair_no);
-	    
-	    jedis.close();
-	    
-	    return dets;
+		
+		for(String s : teachers) {
+			jedis.sadd("teacher_names", s);
+		}
+		
+		jedis.close();
 	}*/
 	
 	public Set<Map<String, String>> getTeacherSchedule(String teachName) {
@@ -63,6 +69,8 @@ public class TeacherDAO {
 		
 		Jedis jedis = new Jedis("localhost");
 		resTemp = jedis.smembers("teacher_schedule:"+teachName);
+		
+		//System.out.println("RT size: "+resTemp.size());
 		
 		//Дістали список ключів до пар
 		for(String s : resTemp) {
@@ -73,6 +81,15 @@ public class TeacherDAO {
 		
 		return res;
 	}
+	
+	public Set<String> getTeachersNames() {
+		Jedis jedis = new Jedis("localhost");
+		Set<String> res = jedis.smembers("teacher_names");
+		
+		jedis.close();
+		
+		return res;
+	}	
 	
 	private int convertTimeToPairNo(String time) {
 		if(time.equals("8:30-9:50")) return 1;
@@ -85,5 +102,23 @@ public class TeacherDAO {
 		
 		return -1;
 	}
+	
+	//Для розкладу викладача по тижнях
+	public Set<Map<String, String>> getTeacherScheduleByWeek(String teachName, int weekNum) {
+		Set<Map<String, String>> schedTeach = getTeacherSchedule(teachName);
+		
+		Set<Map<String, String>> res = new HashSet<Map<String,String>>();
+		
+		for(Map<String, String> sch : schedTeach) {
+			String weeks = sch.get("weeks");
+			
+			if(WeeksParser.getWeeksNumbers(weeks).contains(weekNum)) {
+				res.add(sch);
+			}
+		}
+		
+		return res;
+	}
+	
 
 }

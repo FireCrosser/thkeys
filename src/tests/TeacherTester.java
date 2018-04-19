@@ -12,22 +12,45 @@ import dao.TeacherDAO;
 
 public class TeacherTester {
 	
-	@Before
-	public void fillDatabase() {
-		try {
-			DatabaseFiller.fillSubjectsData();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+	/*@Test
+	public void getTeacherSchedule() throws IOException {
+		DatabaseFiller.fillSubjectsData();
 	
-	@Test
-	public void getTeacherSchedule() {
 		TeacherDAO teachDao = new TeacherDAO();
 		
 		//System.out.println("Розклад викладача доц. A. М. Глибовець");
-		Set<Map<String, String>> sched = teachDao.getTeacherSchedule("доц. В. В. Бублик");
+		Set<Map<String, String>> sched = teachDao.getTeacherSchedule("доц. А.М. Глибовець");
+		
+		for(Map<String, String> sch : sched) {
+			for (Map.Entry<String, String> entry : sch.entrySet()) {
+		        System.out.println(entry.getKey() + ": " + entry.getValue());
+		    }
+			
+			System.out.println("********************");
+		}
+	}*/
+	
+	/*@Test
+	public void getTeacherNames() throws IOException {
+		DatabaseFiller.fillSubjectsData();
+		
+		TeacherDAO teachDao = new TeacherDAO();
+		
+		Set<String> teachers = teachDao.getTeachersNames();
+		
+		for(String name : teachers) {
+			System.out.println(name);
+		}
+	}*/
+	
+	@Test
+	public void getTeacherScheduleByWeek() throws IOException {
+		DatabaseFiller.fillSubjectsData();
+	
+		TeacherDAO teachDao = new TeacherDAO();
+		
+		//System.out.println("Розклад викладача доц. A. М. Глибовець");
+		Set<Map<String, String>> sched = teachDao.getTeacherScheduleByWeek("доц. А.М. Глибовець", 14);
 		
 		for(Map<String, String> sch : sched) {
 			for (Map.Entry<String, String> entry : sch.entrySet()) {

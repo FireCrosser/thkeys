@@ -3,6 +3,8 @@ package parsers;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -63,6 +65,25 @@ public class TimetableParser {
 		return infos;
 	}
 	
+	public Set<String> parseTeacherNames(String filename) throws IOException {
+		Document doc = Jsoup.parse(new File(filename), "UTF-8");
+		Element table = doc.select("table").get(0); //select the first table.
+		Elements rows = table.select("tr");
+		
+		Set<String> res = new HashSet<String>();
+		
+		for (int i = 10; i < rows.size(); i++) {
+			
+			Element row = rows.get(i);
+		    Elements cols = row.select("td");
+		    
+		    if(!(cols.get(3).text().equals("")))
+		    	res.add(cols.get(3).text());
+		}
+		
+		return res;
+	}
+	
 	public static void main(String[] args) throws IOException {
 		TimetableParser parser = new TimetableParser();
 		ArrayList<TeacherSubjectInfo> infos = parser.parseFile("files_to_parse/schedule/timetable_ipz_2.html");
@@ -70,6 +91,12 @@ public class TimetableParser {
 		for(TeacherSubjectInfo inf : infos) {
 			System.out.println(inf);
 		}
+		
+		/*Set<String> teachs = parser.parseTeacherNames("files_to_parse/schedule/timetable_ipz_2.html");
+		
+		for(String inf : teachs) {
+			System.out.println(inf);
+		}*/
 	}
 	
 }
