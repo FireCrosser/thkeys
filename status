@@ -1,0 +1,107 @@
+● tomcat8.service - Tomcat 8 servlet container
+   Loaded: loaded (/usr/lib/systemd/system/tomcat8.service; disabled; vendor preset: disabled)
+   Active: active (running) since Fri 2018-04-20 00:01:03 EEST; 39s ago
+  Process: 11308 ExecStop=/usr/bin/jsvc -pidfile /var/run/tomcat8.pid -stop org.apache.catalina.startup.Bootstrap (code=exited, status=0/SUCCESS)
+  Process: 11341 ExecStart=/usr/bin/jsvc -Dcatalina.home=${CATALINA_HOME} -Dcatalina.base=${CATALINA_BASE} -Djava.io.tmpdir=/var/tmp/tomcat8/temp -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:${CATALINA_HOME}/bin/bootstrap.jar:${CATALINA_HOME}/bin/tomcat-juli.jar -user tomcat8 -java-home ${TOMCAT_JAVA_HOME} -pidfile /var/run/tomcat8.pid -errfile ${ERRFILE} -outfile ${OUTFILE} $CATALINA_OPTS org.apache.catalina.startup.Bootstrap (code=exited, status=0/SUCCESS)
+ Main PID: 11346 (jsvc)
+    Tasks: 46 (limit: 4915)
+   Memory: 172.4M
+   CGroup: /system.slice/tomcat8.service
+           ├─11344 jsvc.exec -Dcatalina.home=/usr/share/tomcat8 -Dcatalina.base=/usr/share/tomcat8 -Djava.io.tmpdir=/var/tmp/tomcat8/temp -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:/usr/share/tomcat8/bin/bootstrap.jar:/usr/share/tomcat8/bin/tomcat-juli.jar -user tomcat8 -java-home /usr/lib/jvm/default-runtime -pidfile /var/run/tomcat8.pid -errfile SYSLOG -outfile SYSLOG org.apache.catalina.startup.Bootstrap
+           ├─11345 jsvc.exec -Dcatalina.home=/usr/share/tomcat8 -Dcatalina.base=/usr/share/tomcat8 -Djava.io.tmpdir=/var/tmp/tomcat8/temp -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:/usr/share/tomcat8/bin/bootstrap.jar:/usr/share/tomcat8/bin/tomcat-juli.jar -user tomcat8 -java-home /usr/lib/jvm/default-runtime -pidfile /var/run/tomcat8.pid -errfile SYSLOG -outfile SYSLOG org.apache.catalina.startup.Bootstrap
+           └─11346 jsvc.exec -Dcatalina.home=/usr/share/tomcat8 -Dcatalina.base=/usr/share/tomcat8 -Djava.io.tmpdir=/var/tmp/tomcat8/temp -cp /usr/share/java/commons-daemon.jar:/usr/share/java/eclipse-ecj.jar:/usr/share/tomcat8/bin/bootstrap.jar:/usr/share/tomcat8/bin/tomcat-juli.jar -user tomcat8 -java-home /usr/lib/jvm/default-runtime -pidfile /var/run/tomcat8.pid -errfile SYSLOG -outfile SYSLOG org.apache.catalina.startup.Bootstrap
+
+Apr 20 00:01:10 villen jsvc.exec[11345]: va:136)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:108)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+                                                 at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+                                                 at org.apache.catalina.authenticator.AuthenticatorBase.invoke(Authentic
+Apr 20 00:01:10 villen jsvc.exec[11345]: atorBase.java:616)
+                                                 at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+                                                 at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+                                                 at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+                                                 at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+                                                 at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+                                                 at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+                                                 at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+                                                 at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+                                                 at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+                                                 at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+                                                 at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+                                                 at org.apache.tomcat.util.threads.TaskThrea
+Apr 20 00:01:10 villen jsvc.exec[11345]: d$WrappingRunnable.run(TaskThread.java:61)
+                                                 at java.lang.Thread.run(Thread.java:748)
+                                         Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@3d535123]
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:162)
+                                                 at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4969)
+                                                 at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5102)
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
+                                                 ... 32 more
+                                         Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/pat/ukma5/nosql/thkeys] is not valid
+                                                 at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:746)
+                                                 at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:704)
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
+                                                 ... 35 more
+Apr 20 00:01:10 villen jsvc.exec[11345]: Apr 20, 2018 12:01:10 AM org.apache.catalina.core.ApplicationContext log
+                                         INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'
+Apr 20 00:01:13 villen jsvc.exec[11345]: Apr 20, 2018 12:01:13 AM org.apache.catalina.core.ApplicationContext log
+                                         INFO: HTMLManager: start: Starting web application '/thkeys'
+Apr 20 00:01:13 villen jsvc.exec[11345]: Apr 20, 2018 12:01:13 AM org.apache.catalina.core.ApplicationContext log
+                                         SEVERE: FAIL - Application at context path /thkeys could not be started
+                                         org.apache.catalina.LifecycleException: Failed to start component [StandardEngine[Catalina].StandardHost[localhost].StandardContext[/thkeys]]
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:162)
+                                                 at org.apache.catalina.manager.ManagerServlet.start(ManagerServlet.java:1286)
+                                                 at org.apache.catalina.manager.HTMLManagerServlet.start(HTMLManagerServlet.java:659)
+                                                 at org.apache.catalina.manager.HTMLManagerServlet.doPost(HTMLManagerServlet.java:210)
+                                                 at javax.servlet.http.HttpServlet.service(HttpServlet.java:648)
+                                                 at javax.servlet.http.HttpServlet.service(HttpServlet.java:729)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.catalina.filters.CsrfPreventionFilter.doFilter(CsrfPreventionFilter.ja
+Apr 20 00:01:13 villen jsvc.exec[11345]: va:136)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.catalina.filters.SetCharacterEncodingFilter.doFilter(SetCharacterEncodingFilter.java:108)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:240)
+                                                 at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:207)
+                                                 at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:212)
+                                                 at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:94)
+                                                 at org.apache.catalina.authenticator.AuthenticatorBase.invoke(Authentic
+Apr 20 00:01:13 villen jsvc.exec[11345]: atorBase.java:616)
+                                                 at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:141)
+                                                 at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:79)
+                                                 at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:620)
+                                                 at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:88)
+                                                 at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:502)
+                                                 at org.apache.coyote.http11.AbstractHttp11Processor.process(AbstractHttp11Processor.java:1132)
+                                                 at org.apache.coyote.AbstractProtocol$AbstractConnectionHandler.process(AbstractProtocol.java:684)
+                                                 at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1539)
+                                                 at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.run(NioEndpoint.java:1495)
+                                                 at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+                                                 at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+                                                 at org.apache.tomcat.util.threads.TaskThrea
+Apr 20 00:01:13 villen jsvc.exec[11345]: d$WrappingRunnable.run(TaskThread.java:61)
+                                                 at java.lang.Thread.run(Thread.java:748)
+                                         Caused by: org.apache.catalina.LifecycleException: Failed to start component [org.apache.catalina.webresources.StandardRoot@3d535123]
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:162)
+                                                 at org.apache.catalina.core.StandardContext.resourcesStart(StandardContext.java:4969)
+                                                 at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5102)
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
+                                                 ... 32 more
+                                         Caused by: java.lang.IllegalArgumentException: The main resource set specified [/home/pat/ukma5/nosql/thkeys] is not valid
+                                                 at org.apache.catalina.webresources.StandardRoot.createMainResourceSet(StandardRoot.java:746)
+                                                 at org.apache.catalina.webresources.StandardRoot.startInternal(StandardRoot.java:704)
+                                                 at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:145)
+                                                 ... 35 more
+Apr 20 00:01:13 villen jsvc.exec[11345]: Apr 20, 2018 12:01:13 AM org.apache.catalina.core.ApplicationContext log
+                                         INFO: HTMLManager: list: Listing contexts for virtual host 'localhost'

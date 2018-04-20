@@ -44,10 +44,10 @@ public class AuditoriesParser {
 		
 		return auds;
 	}
-	
-	public static void main(String[] args) throws IOException {
-		AuditoriesParser parser = new AuditoriesParser();
-		parser.parseFile("files_to_parse/auditories.html");
-	}
+//	
+//	public static void main(String[] args) throws IOException {
+//		AuditoriesParser parser = new AuditoriesParser();
+//		parser.parseFile("files_to_parse/auditories.html");
+//	}
 
 }

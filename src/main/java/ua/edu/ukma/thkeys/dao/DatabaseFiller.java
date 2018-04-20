@@ -73,8 +73,8 @@ public class DatabaseFiller {
 		return res;
 	}
 	
-	public static void main(String[] args) throws IOException {
-		fillSubjectsData();
-	}
+//	public static void main(String[] args) throws IOException {
+//		fillSubjectsData();
+//	}
 
 }

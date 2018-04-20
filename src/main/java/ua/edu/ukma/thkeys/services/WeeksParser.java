@@ -58,15 +58,15 @@ public class WeeksParser {
 		return res;
 	}
 	
-	public static void main(String[] args) {
-		HashSet<Integer> weeks = WeeksParser.getWeeksNumbers("1 - 12");
-		
-		for(int w : weeks) {
-			System.out.print(w+" ");
-		}
-		
-		/*String s = "1 - 12";
-		System.out.println(s.replaceAll("\\s+",""));*/
-	}
+//	public static void main(String[] args) {
+//		HashSet<Integer> weeks = WeeksParser.getWeeksNumbers("1 - 12");
+//		
+//		for(int w : weeks) {
+//			System.out.print(w+" ");
+//		}
+//		
+//		/*String s = "1 - 12";
+//		System.out.println(s.replaceAll("\\s+",""));*/
+//	}
 
 }

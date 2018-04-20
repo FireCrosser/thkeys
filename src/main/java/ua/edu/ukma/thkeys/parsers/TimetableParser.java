@@ -84,19 +84,19 @@ public class TimetableParser {
 		return res;
 	}
 	
-	public static void main(String[] args) throws IOException {
-		TimetableParser parser = new TimetableParser();
-		ArrayList<TeacherSubjectInfo> infos = parser.parseFile("files_to_parse/schedule/timetable_ipz_2.html");
-		
-		for(TeacherSubjectInfo inf : infos) {
-			System.out.println(inf);
-		}
-		
-		/*Set<String> teachs = parser.parseTeacherNames("files_to_parse/schedule/timetable_ipz_2.html");
-		
-		for(String inf : teachs) {
-			System.out.println(inf);
-		}*/
-	}
+//	public static void main(String[] args) throws IOException {
+//		TimetableParser parser = new TimetableParser();
+//		ArrayList<TeacherSubjectInfo> infos = parser.parseFile("files_to_parse/schedule/timetable_ipz_2.html");
+//		
+//		for(TeacherSubjectInfo inf : infos) {
+//			System.out.println(inf);
+//		}
+//		
+//		/*Set<String> teachs = parser.parseTeacherNames("files_to_parse/schedule/timetable_ipz_2.html");
+//		
+//		for(String inf : teachs) {
+//			System.out.println(inf);
+//		}*/
+//	}
 	
 }

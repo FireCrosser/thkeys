@@ -13,7 +13,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 public class JedisConfiguration {
-        
+
     @Bean
     public Jedis jedis() {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
