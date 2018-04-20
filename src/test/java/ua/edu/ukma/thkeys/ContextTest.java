@@ -6,9 +6,12 @@
 package ua.edu.ukma.thkeys;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@WebAppConfiguration
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes={App.class})
 public class ContextTest {
 
     @Test

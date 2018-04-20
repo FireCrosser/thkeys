@@ -5,20 +5,27 @@ import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import ua.edu.ukma.thkeys.ContextTest;
 
 import ua.edu.ukma.thkeys.dao.ClassroomDAO;
 import ua.edu.ukma.thkeys.dao.DatabaseFiller;
 
-public class LaborantAudsTester {
+public class LaborantAudsTester extends ContextTest{
 	
+    @Autowired
+    public DatabaseFiller databaseFiller;
+    
+    @Autowired
+    public ClassroomDAO clDao;
+    
 	@Before
 	public void fillData() throws IOException {
-		DatabaseFiller.fillClassroomsData();
+		databaseFiller.fillClassroomsData();
 	}
 	
 	@Test
 	public void auditoriesTest() {
-		ClassroomDAO clDao = new ClassroomDAO();
 		
 		System.out.println("All auditories:");
 		Set<String> audsAll = clDao.getAllClassrooms();

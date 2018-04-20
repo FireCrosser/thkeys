@@ -3,25 +3,27 @@ package ua.edu.ukma.thkeys.dao;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.springframework.stereotype.Component;
 
 import ua.edu.ukma.thkeys.parsers.AuditoriesParser;
 import ua.edu.ukma.thkeys.parsers.TimetableParser;
 import ua.edu.ukma.thkeys.vo.Auditorium;
 import ua.edu.ukma.thkeys.vo.TeacherSubjectInfo;
 
+@Component
 public class DatabaseFiller {
 	
-	public static void fillClassroomsData() throws IOException {
+	public void fillClassroomsData() throws IOException {
 		//Parsing auditories data
 		AuditoriesParser parser = new AuditoriesParser();
-		ArrayList<Auditorium> auds = parser.parseFile("files_to_parse/auds/auditories.html");
+		ArrayList<Auditorium> auds = parser.parseFile("/home/pat/ukma5/nosql/thkeys/files_to_parse/auds/auditories.html");
 		ClassroomDAO clDao = new ClassroomDAO();
 		
 		//inserting in Redis parsed information
 		clDao.insertClassroomsData(auds);
 	}
 	
-	public static void fillSubjectsData() throws IOException {
+	public void fillSubjectsData() throws IOException {
 		//Parsing schedule data
 	    TimetableParser timetPars = new TimetableParser();
 	    TeacherDAO teachDao = new TeacherDAO();
@@ -56,8 +58,8 @@ public class DatabaseFiller {
 	    
 	}*/
 	
-	private static ArrayList<String> getAllFiles() {
-		String folderPath = "F:/���������/Info_retr/Practices/workspace/Redis_schedule/files_to_parse/schedule";
+	private ArrayList<String> getAllFiles() {
+		String folderPath = "/home/pat/ukma5/nosql/thkeys/files_to_parse/schedule";
 		
 		ArrayList<String> res = new ArrayList<String>();
 		
@@ -69,8 +71,7 @@ public class DatabaseFiller {
 	        res.add(listOfFiles[i].getAbsolutePath());
 	      }
 	    }
-		    
-		return res;
+            return res;
 	}
 	
 //	public static void main(String[] args) throws IOException {
