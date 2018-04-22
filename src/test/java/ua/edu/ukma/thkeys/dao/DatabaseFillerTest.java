@@ -19,7 +19,7 @@ public class DatabaseFillerTest extends ContextTest{
     @Autowired
     public DatabaseFiller databaseFiller;
     
-    @Test
+//    @Test
     public void fillClassroomsData() throws IOException {
         databaseFiller.fillClassroomsData();
     }

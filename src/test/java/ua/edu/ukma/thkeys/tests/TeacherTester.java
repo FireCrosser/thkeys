@@ -5,17 +5,23 @@ import java.util.Map;
 import java.util.Set;
 
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import ua.edu.ukma.thkeys.ContextTest;
 
 import ua.edu.ukma.thkeys.dao.DatabaseFiller;
 import ua.edu.ukma.thkeys.dao.TeacherDAO;
 
-public class TeacherTester {
+public class TeacherTester extends ContextTest{
 	
-	/*@Test
+    @Autowired
+    public DatabaseFiller databaseFiller;
+    
+    @Autowired
+    public TeacherDAO teachDao;
+    
+//	@Test
 	public void getTeacherSchedule() throws IOException {
-		DatabaseFiller.fillSubjectsData();
-	
-		TeacherDAO teachDao = new TeacherDAO();
+		databaseFiller.fillSubjectsData();
 		
 		//System.out.println("������� ��������� ���. A. �. ���������");
 		Set<Map<String, String>> sched = teachDao.getTeacherSchedule("���. �.�. ���������");
@@ -27,26 +33,22 @@ public class TeacherTester {
 			
 			System.out.println("********************");
 		}
-	}*/
+	}
 	
-	/*@Test
+	@Test
 	public void getTeacherNames() throws IOException {
-		DatabaseFiller.fillSubjectsData();
-		
-		TeacherDAO teachDao = new TeacherDAO();
+		databaseFiller.fillSubjectsData();
 		
 		Set<String> teachers = teachDao.getTeachersNames();
 		
 		for(String name : teachers) {
-			System.out.println(name);
+                    System.out.println(name);
 		}
-	}*/
+	}
 	
-	@Test
+//	@Test
 	public void getTeacherScheduleByWeek() throws IOException {
-		DatabaseFiller.fillSubjectsData();
-	
-		TeacherDAO teachDao = new TeacherDAO();
+		databaseFiller.fillSubjectsData();
 		
 		//System.out.println("������� ��������� ���. A. �. ���������");
 		Set<Map<String, String>> sched = teachDao.getTeacherScheduleByWeek("���. �.�. ���������", 14);

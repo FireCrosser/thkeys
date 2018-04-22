@@ -24,7 +24,7 @@ public class LaborantAudsTester extends ContextTest{
 		databaseFiller.fillClassroomsData();
 	}
 	
-	@Test
+//	@Test
 	public void auditoriesTest() {
 		
 		System.out.println("All auditories:");

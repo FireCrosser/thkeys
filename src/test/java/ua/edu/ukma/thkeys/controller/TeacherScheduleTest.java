@@ -14,7 +14,7 @@ public class TeacherScheduleTest {
         
     }
     
-    @Test
+//    @Test
     public void testGettingSchele() {
         
     }

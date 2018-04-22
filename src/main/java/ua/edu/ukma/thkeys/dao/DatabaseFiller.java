@@ -3,6 +3,7 @@ package ua.edu.ukma.thkeys.dao;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import ua.edu.ukma.thkeys.parsers.AuditoriesParser;
@@ -13,11 +14,16 @@ import ua.edu.ukma.thkeys.vo.TeacherSubjectInfo;
 @Component
 public class DatabaseFiller {
 	
+    @Autowired
+    public ClassroomDAO clDao;
+    
+    @Autowired
+    public TeacherDAO teachDao;
+    
 	public void fillClassroomsData() throws IOException {
 		//Parsing auditories data
 		AuditoriesParser parser = new AuditoriesParser();
 		ArrayList<Auditorium> auds = parser.parseFile("/home/pat/ukma5/nosql/thkeys/files_to_parse/auds/auditories.html");
-		ClassroomDAO clDao = new ClassroomDAO();
 		
 		//inserting in Redis parsed information
 		clDao.insertClassroomsData(auds);
@@ -26,7 +32,6 @@ public class DatabaseFiller {
 	public void fillSubjectsData() throws IOException {
 		//Parsing schedule data
 	    TimetableParser timetPars = new TimetableParser();
-	    TeacherDAO teachDao = new TeacherDAO();
 	    
 	    /*ArrayList<TeacherSubjectInfo> subjs = timetPars.parseFile("files_to_parse/schedule/timetable_ipz_2.html"); 
 	    teachDao.insertSubjectsData(subjs);*/
