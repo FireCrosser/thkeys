@@ -57,7 +57,7 @@ public class TimetableParser {
 		    info.setGroup(cols.get(4).text());
 		    info.setWeeks(cols.get(5).text());
 		    info.setAuditorium(cols.get(6).text());
-		    info.setSpec_year(rows.get(6).text());
+		    info.setSpecYear(rows.get(6).text());
 		    
 		    infos.add(info);
 		}

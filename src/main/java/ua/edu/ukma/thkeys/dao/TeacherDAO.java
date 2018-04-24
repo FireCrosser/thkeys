@@ -1,15 +1,15 @@
 package ua.edu.ukma.thkeys.dao;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import redis.clients.jedis.Jedis;
-import ua.edu.ukma.thkeys.services.WeeksParser;
+import ua.edu.ukma.thkeys.service.WeeksParser;
 import ua.edu.ukma.thkeys.vo.TeacherSubjectInfo;
 
 @Repository
@@ -19,25 +19,25 @@ public class TeacherDAO {
     public Jedis jedis;
     
 	//��� �������� ���������
-	public void insertSubjectsData(ArrayList<TeacherSubjectInfo> subjects) {
+	public void insertSubjectsData(final List<TeacherSubjectInfo> subjects) {
 	    //System.out.println("Connection to server sucessfully DAO");
 	    
 	    String pairKey = "pk";
 	    
 	    for(TeacherSubjectInfo subj : subjects) {
 	    	
-	    	Map<String, String> subj_dets = new HashMap<String, String>();
+	    	Map<String, String> subj_dets = new HashMap<>();
 	    	subj_dets.put("auditorium", subj.getAuditorium());
 	    	subj_dets.put("subject_name", subj.getSubjectName());
 	    	subj_dets.put("group", subj.getGroup());
 	    	subj_dets.put("weeks", subj.getWeeks());
-	    	subj_dets.put("speciality and year", subj.getSpec_year());
+	    	subj_dets.put("speciality and year", subj.getSpecYear());
 	    	subj_dets.put("day", subj.getDayName());
 	    	subj_dets.put("time", subj.getTime());
 	    	
 	    	//jedis.hmset("teacher_subj_det:"+subj.getDayName()+":"+convertTimeToPairNo(subj.getTime()), subj_dets);
 	    	
-	    	pairKey = "teacher_subject_det:"+subj.getSpec_year()+":"+subj.getDayName()+":"+convertTimeToPairNo(subj.getTime());
+	    	pairKey = "teacher_subject_det:"+subj.getSpecYear()+":"+subj.getDayName()+":"+convertTimeToPairNo(subj.getTime());
 	    	
 	    	//���������� ����� ��� ����
 	    	jedis.hmset(pairKey, subj_dets);
@@ -46,7 +46,7 @@ public class TeacherDAO {
 	    	jedis.sadd("teacher_schedule:"+subj.getTeacher(), pairKey);
 	    	
 	    	//������� ������ ��������������
-	    	jedis.sadd("specialities_years", subj.getSpec_year());
+	    	jedis.sadd("specialities_years", subj.getSpecYear());
 	    	
 	    	//������� ������ ����������
 	    	jedis.sadd("teacher_names", subj.getTeacher());
@@ -87,6 +87,10 @@ public class TeacherDAO {
 		return res;
 	}	
 	
+        public void flushDb() {
+            jedis.flushDB();
+        }
+        
 	private int convertTimeToPairNo(String time) {
 		if(time.equals("8:30-9:50")) return 1;
 		if(time.equals("10:00-11:20")) return 2;

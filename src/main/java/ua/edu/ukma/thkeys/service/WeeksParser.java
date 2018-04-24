@@ -1,4 +1,4 @@
-package ua.edu.ukma.thkeys.services;
+package ua.edu.ukma.thkeys.service;
 
 import java.util.HashSet;
 

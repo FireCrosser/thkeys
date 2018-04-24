@@ -1,6 +1,6 @@
 package ua.edu.ukma.thkeys.dao;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ public class ClassroomDAO {
     @Autowired
     private Jedis jedis;
 	
-	public void insertClassroomsData(ArrayList<Auditorium> auds) {
+	public void insertClassroomsData(final List<Auditorium> auds) {
 	    //System.out.println("Connection to server sucessfully");
 	    
 	    for(Auditorium aud : auds) {

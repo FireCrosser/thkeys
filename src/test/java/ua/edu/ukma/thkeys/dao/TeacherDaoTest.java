@@ -7,6 +7,7 @@ package ua.edu.ukma.thkeys.dao;
 
 import java.util.Map;
 import java.util.Set;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import ua.edu.ukma.thkeys.ContextTest;
 
@@ -15,12 +16,12 @@ public class TeacherDaoTest extends ContextTest {
     @Autowired
     private TeacherDAO teacherDAO;
     
-//    @Test
+    @Test
     public void testTeacherDao() {
-        Set<Map<String, String>> schedule = teacherDAO.getTeacherSchedule("teacher");
-        for (Map<String, String> entry: schedule) {
+        Set<Map<String, String>> schedule = teacherDAO.getTeacherSchedule("доц. О.В. Олецький");
+        schedule.forEach((entry) -> {
             System.out.println(entry);
-        }
+        });
     }
     
 }

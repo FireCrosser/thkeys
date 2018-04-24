@@ -9,15 +9,15 @@ public class TeacherSubjectInfo {
 	private String group;
 	private String weeks;
 	private String auditorium;
-	private String spec_year;
+	private String specYear;
 	
 	
-	public String getSpec_year() {
-		return spec_year;
+	public String getSpecYear() {
+		return specYear;
 	}
 
-	public void setSpec_year(String spec_year) {
-		this.spec_year = spec_year;
+	public void setSpecYear(String specYear) {
+		this.specYear = specYear;
 	}
 
 	public String getDayName() {
@@ -81,7 +81,7 @@ public class TeacherSubjectInfo {
 		return "TeacherSubjectInfo [dayName=" + dayName + ", time=" + time
 				+ ", subjectName=" + subjectName + ", teacher=" + teacher
 				+ ", group=" + group + ", weeks=" + weeks + ", auditorium="
-				+ auditorium + ", spec_year=" + spec_year + "]";
+				+ auditorium + ", spec_year=" + specYear + "]";
 	}
 	
 	
