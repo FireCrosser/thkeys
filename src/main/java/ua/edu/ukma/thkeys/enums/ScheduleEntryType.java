@@ -10,6 +10,18 @@ public class ScheduleEntryType {
     private int groupNumber;
     private ScheduleEntryTypeFlag flag;
 
+    public ScheduleEntryType() {
+    }
+    
+    public ScheduleEntryType(ScheduleEntryTypeFlag flag) {
+        this.flag = flag;
+    }
+    
+    public ScheduleEntryType(int groupNumber, ScheduleEntryTypeFlag flag) {
+        this.groupNumber = groupNumber;
+        this.flag = flag;
+    }
+    
     public int getGroupNumber() {
         return groupNumber;
     }

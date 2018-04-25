@@ -21,7 +21,7 @@ public class HomeController {
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
     @ResponseBody
-    public String getTeachers() {
+    public String welcome() {
         return "Welcome in thkeys!";
     }
     

@@ -70,7 +70,7 @@ public class TeacherDAO {
 		Set<Map<String, String>> res = new HashSet<Map<String, String>>();
 		
 		resTemp = jedis.smembers("teacher_schedule:"+teachName);
-		
+                
 		//System.out.println("RT size: "+resTemp.size());
 		
 		//ĳ����� ������ ������ �� ���

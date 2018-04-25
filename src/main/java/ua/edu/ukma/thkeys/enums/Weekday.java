@@ -6,7 +6,7 @@
 package ua.edu.ukma.thkeys.enums;
 
 public enum Weekday {
-    
+
     monday("понеділок"),
     tuesday("вівторок"),
     wednesday("середа"),
@@ -14,14 +14,23 @@ public enum Weekday {
     friday("п'ятниця"),
     saturday("субота"),
     sunday("неділя");
-    
+
     private final String ukrainianName;
-    
+
     Weekday(String ukrainianName) {
         this.ukrainianName = ukrainianName;
     }
 
     public String getUa() {
         return ukrainianName;
+    }
+
+    public Weekday getByUa(final String name) {
+        for (Weekday weekday : Weekday.values()) {
+            if (weekday.getUa().equals(name.toLowerCase())) {
+                return weekday;
+            }
+        }
+        return null;
     }
 }
